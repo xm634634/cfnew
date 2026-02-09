@@ -43,6 +43,8 @@
         'SG': ['🇸🇬 新加坡', 'SG', 'Singapore'],
         'JP': ['🇯🇵 日本', 'JP', 'Japan'],
         'KR': ['🇰🇷 韩国', 'KR', 'South Korea'],
+        'TH': ['🇹🇭 泰国', 'TH', 'Thailand'],
+        'MY': ['🇲🇾 马来西亚', 'MY', 'Malaysia'],
         'DE': ['🇩🇪 德国', 'DE', 'Germany'],
         'SE': ['🇸🇪 瑞典', 'SE', 'Sweden'],
         'NL': ['🇳🇱 荷兰', 'NL', 'Netherlands'],
@@ -59,6 +61,8 @@
         { domain: 'ProxyIP.SG.CMLiussss.net', region: 'SG', regionCode: 'SG', port: 443 },
         { domain: 'ProxyIP.JP.CMLiussss.net', region: 'JP', regionCode: 'JP', port: 443 },
         { domain: 'ProxyIP.KR.CMLiussss.net', region: 'KR', regionCode: 'KR', port: 443 },
+        { domain: 'ProxyIP.TH.CMLiussss.net', region: 'TH', regionCode: 'TH', port: 443 },
+        { domain: 'ProxyIP.MY.CMLiussss.net', region: 'MY', regionCode: 'MY', port: 443 },
         { domain: 'ProxyIP.DE.CMLiussss.net', region: 'DE', regionCode: 'DE', port: 443 },
         { domain: 'ProxyIP.SE.CMLiussss.net', region: 'SE', regionCode: 'SE', port: 443 },
         { domain: 'ProxyIP.NL.CMLiussss.net', region: 'NL', regionCode: 'NL', port: 443 },
@@ -182,6 +186,7 @@
             if (cfCountry) {
                 const countryToRegion = {
                     'US': 'US', 'SG': 'SG', 'JP': 'JP', 'KR': 'KR',
+                    'TH': 'TH', 'MY': 'MY',
                     'DE': 'DE', 'SE': 'SE', 'NL': 'NL', 'FI': 'FI', 'GB': 'GB',
                     'CN': 'SG', 'TW': 'JP', 'AU': 'SG', 'CA': 'US',
                     'FR': 'DE', 'IT': 'DE', 'ES': 'DE', 'CH': 'DE',
@@ -246,6 +251,8 @@
             'SG': ['JP', 'KR', 'US'], 
             'JP': ['SG', 'KR', 'US'], 
             'KR': ['JP', 'SG', 'US'], 
+            'TH': ['SG', 'MY', 'JP'],
+            'MY': ['SG', 'TH', 'JP'],
             'DE': ['NL', 'GB', 'SE', 'FI'], 
             'SE': ['DE', 'NL', 'FI', 'GB'], 
             'NL': ['DE', 'GB', 'SE', 'FI'], 
@@ -258,7 +265,7 @@
 
     function getAllRegionsByPriority(region) {
         const nearbyRegions = getNearbyRegions(region);
-        const allRegions = ['US', 'SG', 'JP', 'KR', 'DE', 'SE', 'NL', 'FI', 'GB'];
+        const allRegions = ['US', 'SG', 'JP', 'KR', 'TH', 'MY', 'DE', 'SE', 'NL', 'FI', 'GB'];
         
         return [region, ...nearbyRegions, ...allRegions.filter(r => r !== region && !nearbyRegions.includes(r))];
     }
@@ -2382,7 +2389,7 @@
                     preferredControlHint: '设置为"关闭优选"时只使用原生地址，不生成优选IP和域名节点',
                     regionNames: {
                         US: '🇺🇸 美国', SG: '🇸🇬 新加坡', JP: '🇯🇵 日本',
-                        KR: '🇰🇷 韩国', DE: '🇩🇪 德国', SE: '🇸🇪 瑞典', NL: '🇳🇱 荷兰',
+                        KR: '🇰🇷 韩国', TH: '🇹🇭 泰国', MY: '🇲🇾 马来西亚', DE: '🇩🇪 德国', SE: '🇸🇪 瑞典', NL: '🇳🇱 荷兰',
                         FI: '🇫🇮 芬兰', GB: '🇬🇧 英国'
                     },
                     terminal: '终端 v2.9.3',
@@ -2521,7 +2528,7 @@
                     preferredControlHint: 'وقتی "بستن ترجیح" تنظیم شود، فقط از آدرس اصلی استفاده می‌شود، گره‌های IP و دامنه ترجیحی تولید نمی‌شوند',
                     regionNames: {
                         US: '🇺🇸 آمریکا', SG: '🇸🇬 سنگاپور', JP: '🇯🇵 ژاپن',
-                        KR: '🇰🇷 کره جنوبی', DE: '🇩🇪 آلمان', SE: '🇸🇪 سوئد', NL: '🇳🇱 هلند',
+                        KR: '🇰🇷 کره جنوبی', TH: '🇹🇭 تایلند', MY: '🇲🇾 مالزی', DE: '🇩🇪 آلمان', SE: '🇸🇪 سوئد', NL: '🇳🇱 هلند',
                         FI: '🇫🇮 فنلاند', GB: '🇬🇧 بریتانیا'
                     },
                     terminal: 'ترمینال v2.9.3',
@@ -2822,6 +2829,8 @@
                                     <option value="SG">${t.regionNames.SG}</option>
                                     <option value="JP">${t.regionNames.JP}</option>
                                     <option value="KR">${t.regionNames.KR}</option>
+                                    <option value="TH">${t.regionNames.TH}</option>
+                                    <option value="MY">${t.regionNames.MY}</option>
                                     <option value="DE">${t.regionNames.DE}</option>
                                     <option value="SE">${t.regionNames.SE}</option>
                                     <option value="NL">${t.regionNames.NL}</option>
@@ -3449,7 +3458,7 @@
                                 regionMatch: '地区匹配: ',
                                 regionNames: {
                         'US': '🇺🇸 美国', 'SG': '🇸🇬 新加坡', 'JP': '🇯🇵 日本',
-                        'KR': '🇰🇷 韩国', 'DE': '🇩🇪 德国', 'SE': '🇸🇪 瑞典', 'NL': '🇳🇱 荷兰',
+                        'KR': '🇰🇷 韩国', 'TH': '🇹🇭 泰国', 'MY': '🇲🇾 马来西亚', 'DE': '🇩🇪 德国', 'SE': '🇸🇪 瑞典', 'NL': '🇳🇱 荷兰',
                         'FI': '🇫🇮 芬兰', 'GB': '🇬🇧 英国'
                                 },
                                 customIPMode: '自定义ProxyIP模式 (p变量启用)',
@@ -3474,7 +3483,7 @@
                                 regionMatch: 'تطبیق منطقه: ',
                                 regionNames: {
                                     'US': '🇺🇸 آمریکا', 'SG': '🇸🇬 سنگاپور', 'JP': '🇯🇵 ژاپن',
-                                    'KR': '🇰🇷 کره جنوبی', 'DE': '🇩🇪 آلمان', 'SE': '🇸🇪 سوئد', 'NL': '🇳🇱 هلند',
+                                    'KR': '🇰🇷 کره جنوبی', 'TH': '🇹🇭 تایلند', 'MY': '🇲🇾 مالزی', 'DE': '🇩🇪 آلمان', 'SE': '🇸🇪 سوئد', 'NL': '🇳🇱 هلند',
                                     'FI': '🇫🇮 فنلاند', 'GB': '🇬🇧 بریتانیا'
                                 },
                                 customIPMode: 'حالت ProxyIP سفارشی (متغیر p فعال است)',
@@ -5793,6 +5802,8 @@
                         { domain: 'ProxyIP.SG.CMLiussss.net', region: 'SG', regionCode: 'SG', port: 443 },
                         { domain: 'ProxyIP.JP.CMLiussss.net', region: 'JP', regionCode: 'JP', port: 443 },
                         { domain: 'ProxyIP.KR.CMLiussss.net', region: 'KR', regionCode: 'KR', port: 443 },
+                        { domain: 'ProxyIP.TH.CMLiussss.net', region: 'TH', regionCode: 'TH', port: 443 },
+                        { domain: 'ProxyIP.MY.CMLiussss.net', region: 'MY', regionCode: 'MY', port: 443 },
                         { domain: 'ProxyIP.DE.CMLiussss.net', region: 'DE', regionCode: 'DE', port: 443 },
                         { domain: 'ProxyIP.SE.CMLiussss.net', region: 'SE', regionCode: 'SE', port: 443 },
                         { domain: 'ProxyIP.NL.CMLiussss.net', region: 'NL', regionCode: 'NL', port: 443 },
